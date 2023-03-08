@@ -1,77 +1,70 @@
-import java.util.Objects;
+public class ComputerScienceStudent extends Student implements Citizen {
 
-public class ComputerScienceStudent implements Citizen {
+    boolean passedJavaCourse = false;
+    boolean passedSqlCourse = false;
+    protected int anzahlStundenJavaGelernt = 0;
+    protected int anzahlStundenSqlGelernt = 0;
 
-    private String name;
-    private String course;
-    private String adress;
-    private int identityCardNumber;
 
     public ComputerScienceStudent() {
 
     }
 
-    public ComputerScienceStudent(String name, String course, String adress, int identityCardNumber) {
-        this.name = name;
-        this.course = course;
-        this.adress = adress;
-        this.identityCardNumber = identityCardNumber;
+    public ComputerScienceStudent(String name, String course, String address, int identityCardNumber, boolean passedJavaCourse, boolean passedSqlCourse) {
+        super(name, course, address, identityCardNumber);
+        this.passedJavaCourse = passedJavaCourse;
+        this.passedSqlCourse = passedSqlCourse;
     }
 
-    public String getName() {
-        return name;
+    public void gehtLernen() {
+        System.out.println("1 Stunde später");
+        anzahlStundenJavaGelernt++;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
+    public void eineStundeJavaLernen() {
+        anzahlStundenJavaGelernt++;
+        System.out.println(getAnzahlStundenJavaGelernt()+" Stunde/n Java gelernt");
+        if (getAnzahlStundenJavaGelernt() == 5) {
+            setPassedJavaCourse(true);
+            System.out.println("Herlichen Glückwunsch. Sie haben den Java-Kurs bestanden");;
+        }
     }
 
     @Override
     public String getAdress() {
-        return adress;
+        return super.getAddress();
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public boolean isPassedJavaCourse() {
+        return passedJavaCourse;
     }
 
-    @Override
-    public int getIdentityCardNumber() {
-        return identityCardNumber;
+    public void setPassedJavaCourse(boolean passedJavaCourse) {
+        this.passedJavaCourse = passedJavaCourse;
     }
 
-    public void setIdentityCardNumber(int identityCardNumber) {
-        this.identityCardNumber = identityCardNumber;
+    public boolean isPassedSqlCourse() {
+        return passedSqlCourse;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ComputerScienceStudent that = (ComputerScienceStudent) o;
-        return identityCardNumber == that.identityCardNumber && Objects.equals(name, that.name) && Objects.equals(course, that.course) && Objects.equals(adress, that.adress);
+    public void setPassedSqlCourse(boolean passedSqlCourse) {
+        this.passedSqlCourse = passedSqlCourse;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, course, adress, identityCardNumber);
+    public int getAnzahlStundenJavaGelernt() {
+        return anzahlStundenJavaGelernt;
     }
 
-    @Override
-    public String toString() {
-        return "ComputerScienceStudent{" +
-                "name='" + name + '\'' +
-                ", course='" + course + '\'' +
-                ", adress='" + adress + '\'' +
-                ", identityCardNumber=" + identityCardNumber +
-                '}';
+    public void setAnzahlStundenJavaGelernt(int anzahlStundenJavaGelernt) {
+        this.anzahlStundenJavaGelernt = anzahlStundenJavaGelernt;
     }
+
+    public int getAnzahlStundenSqlGelernt() {
+        return anzahlStundenSqlGelernt;
+    }
+
+    public void setAnzahlStundenSqlGelernt(int anzahlStundenSqlGelernt) {
+        this.anzahlStundenSqlGelernt = anzahlStundenSqlGelernt;
+    }
+
 }
